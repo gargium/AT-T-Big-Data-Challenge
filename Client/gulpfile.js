@@ -1,4 +1,4 @@
- * AngularJS Boilerplate: Build, watch and other useful tasks
+ /* AngularJS Boilerplate: Build, watch and other useful tasks
  *
  * The build process consists of following steps:
  * 1. clean /_build folder
