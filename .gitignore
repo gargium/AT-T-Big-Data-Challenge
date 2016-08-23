@@ -1,0 +1,9 @@
+# Ignore Stuff Here #
+#####################
+
+# Folders to Ignore #
+Client/node_modules
+Client/bower_components
+
+# File Types to Ignore #
+*.log
