@@ -1,4 +1,5 @@
 # AngularJS-Boilerplate
+## Just a FYI from the boilerplate I downloaded
 Simple AngularJS Boilerplate to kick start your new project with SASS support and Gulp watch/build tasks
 
 # Features
@@ -13,17 +14,6 @@ Simple AngularJS Boilerplate to kick start your new project with SASS support an
 * less than 10 request in build version
 * minified CSS and JS build files
 * google analytics snippet
-
-## Download
-```bash
-bower install angularjs-boilerplate
-```
-
-or
-
-```bash
-git clone https://github.com/jbutko/AngularJS-Boilerplate.git
-```
 
 ## 1. Setup
 ```bash
