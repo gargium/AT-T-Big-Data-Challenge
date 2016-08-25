@@ -2,8 +2,7 @@
 #####################
 
 # Folders to Ignore #
-Client/node_modules
-Client/bower_components
+.idea/
 
 # File Types to Ignore #
 *.log
