@@ -35,6 +35,23 @@
         SRTracts = json['SR'];
         console.log(SRTracts);
 
+        if (true){
+        try{
+        console.log ("suh homei");
+            a=JSON.parse(tracts);
+        }catch(e){
+            alert(e); //error in the above string(in this case,yes)!
+        }
+
+          try {
+            messageObject = JSON.parse(message);
+          } catch (e) {
+            return console.error(e);
+          }
+
+}
+
+
         switch (countyDropdown.value) {
             case 'SR':
                 tractDropdown.options.length = SRTracts.length;

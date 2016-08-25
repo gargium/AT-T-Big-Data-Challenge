@@ -1,5 +1,6 @@
-from flask import Flask, render_template, Markup, json
+from flask import Flask, render_template, Markup, json, jsonify
 from bigData import bayArea
+
 app = Flask(__name__)
 bayArea = bayArea()
 
@@ -19,27 +20,37 @@ def chart1():
     with open('static/Data/sanFrancisco/sanFrancisco2010.geojson') as sf2010:
         sf2010Data = json.load(sf2010)
 
-    for a in range(len(sf2010Data["features"])):
-        if income in sf2010Data["features"][a]["properties"]:
-            print sf2010Data["features"][a]["properties"][income]
-            incomeList.append(sf2010Data["features"][a]["properties"][income])
+    # for a in range(len(sf2010Data["features"])):
+    #     if income in sf2010Data["features"][a]["properties"]:
+    #         print sf2010Data["features"][a]["properties"][income]
+    #         incomeList.append(sf2010Data["features"][a]["properties"][income])
+    #
+    # for b in range(len(sf2010Data["features"])):
+    #     if price in sf2010Data["features"][b]["properties"]:
+    #         print sf2010Data["features"][b]["properties"][price]
+    #         priceList.append(sf2010Data["features"][b]["properties"][price])
+    #
+    # for c in range(len(sf2010Data["features"])):
+    #     if censusTract in sf2010Data["features"][c]["properties"]:
+    #         print sf2010Data["features"][c]["properties"][censusTract]
+    #         censusTractList.append(sf2010Data["features"][c]["properties"][censusTract])
 
-    for b in range(len(sf2010Data["features"])):
-        if price in sf2010Data["features"][b]["properties"]:
-            print sf2010Data["features"][b]["properties"][price]
-            priceList.append(sf2010Data["features"][b]["properties"][price])
+    countyToTractMap = {}
+    countyToTractMap["SR"] = bayArea.get_tracts("SR")
+    print countyToTractMap
+    countyToTractMap["SF"] = bayArea.get_tracts("SF")
+    print countyToTractMap
+    countyToTractMap["SC"] = bayArea.get_tracts("SC")
+    print countyToTractMap
 
-    for c in range(len(sf2010Data["features"])):
-        if censusTract in sf2010Data["features"][c]["properties"]:
-            print sf2010Data["features"][c]["properties"][censusTract]
-            censusTractList.append(sf2010Data["features"][c]["properties"][censusTract])
+
 
     incomeValues = incomeList
     priceValues = priceList
     censusTractValues = censusTractList
     # labels = ["January","February","March","April","May","June","July","August"]
     # values = [10,9,8,7,6,4,7,8]
-    return render_template('chart.html', values=priceValues, labels=censusTractValues)
+    return render_template('chart.html', values=priceValues, labels=censusTractValues, countyTractMap=json.dumps(countyToTractMap))
 
 @app.route("/map")
 def map():
