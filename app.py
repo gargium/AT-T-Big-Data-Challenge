@@ -44,4 +44,4 @@ def chart1():
     return render_template('chart.html', values=priceValues, labels=censusTractValues)
 
 if __name__ == "__main__":
-	app.run()
+	app.run(debug=True)
