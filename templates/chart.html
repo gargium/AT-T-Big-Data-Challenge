@@ -5,28 +5,73 @@
 {% endblock %}
 
 {% block body %}
-<h1>Income Level Chart</h1><!-- bar chart canvas element -->
+<row>
+    <div class="col-md-10 col-md-offset-1 col-xs-12 text-center">
+        <div class="jumbotron">
+            <h3>Select county and tract to analyze</h3>
+            <hr class="col-md-10 col-md-offset-1">
+            <row>
+                <select name="County" id="" class="selectpicker col-md-5 col-md-offset-1">
+                    <option value="County" disabled>County</option>
+                    <option value="sanFrancisco">San Francisco</option>
+                    <option value="contraCosta">Contra Costa</option>
+                    <option value="santaClara">Santa Clara</option>
+                </select>
+                <select name="Tract" id="" class="selectpicker col-md-5 col-md-offset-1">
+                    <option value="Tract" disabled>Tract</option>
+                    <option value="option1">Option1</option>
+                </select>
+            </row>
+        </div>
+    </div>
+</row>
 
+<row>
+    <div class="col-md-10 col-md-offset-1 col-xs-12 text-center">
+        <div class="jumbotron">
+            <h3>Analyze</h3>
+            <hr class="col-md-10 col-md-offset-1">
+            <select name="factors" id="" class="selectpicker col-md-5 col-md-offset-1">
+                <option value="factors" disabled>Factors</option>
+                <option value="householdIncome">Household Income</option>
+                <option value="homeValue">Home Value</option>
+                <option value="schoolAPIScore">School API Score</option>
+                <option value="employmentRate">Employment Rate</option>
+                <option value="percentDegreeHolder">Percent with College Degrees</option>
+            </select>
+            <div class="col-md-10 col-md-offset-1">
+                <h1>Income Level Chart</h1><!-- bar chart canvas element -->
+                <canvas id="chart" width="10000" height="600"></canvas>
+            </div>
+        </div>
+    </div>
+</row>
 
-<canvas id="chart" width="10000" height="600"></canvas>
+<row>
+    <div class="col-md-10 col-md-offset-1 col-xs-12 text-center">
+        <div class="jumbotron">
+            <h3>[BSI] = <span>93939 (Super Duper)</span></h3>
+        </div>
+    </div>
+</row>
 
 
 <script>
    // bar chart data
    var barData = {
-   labels : [{% for item in labels %}
-                  "{{item}}",
-              {% endfor %}],
-   datasets : [
-      {
+       labels : [{% for item in labels %}
+                      "{{item}}",
+                  {% endfor %}],
+       datasets : [
+          {
             fillColor: "rgba(151,187,205,0.2)",
             strokeColor: "rgba(151,187,205,1)",
             pointColor: "rgba(151,187,205,1)",
-         data : [{% for item in values %}
-                      {{item}},
-                    {% endfor %}]
-      }
-      ]
+            data : [{% for item in values %}
+                          {{item}},
+                        {% endfor %}]
+          }
+       ]
    }
 
    // get bar chart canvas
@@ -45,6 +90,33 @@
         barShowStroke : true,
         scaleShowLabels: true
    });
+
+   var scatterChart = new Chart(ctx, {
+        type: 'line',
+        data: {
+            datasets: [{
+                label: 'Scatter Dataset',
+                data: [{
+                    x: -10,
+                    y: 0
+                }, {
+                    x: 0,
+                    y: 10
+                }, {
+                    x: 10,
+                    y: 5
+                }]
+            }]
+        },
+        options: {
+            scales: {
+                xAxes: [{
+                    type: 'linear',
+                    position: 'bottom'
+                }]
+            }
+        }
+    });
  
 </script>
 
