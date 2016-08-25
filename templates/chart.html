@@ -11,21 +11,64 @@
             <h3>Select county and tract to analyze</h3>
             <hr class="col-md-10 col-md-offset-1">
             <row>
-                <select name="County" id="" class="selectpicker col-md-5 col-md-offset-1">
+                <select name="County" id="countyDropdown" class="selectpicker col-md-5 col-md-offset-1">
                     <option value="County" disabled>County</option>
-                    <option value="sanFrancisco">San Francisco</option>
-                    <option value="contraCosta">Contra Costa</option>
-                    <option value="santaClara">Santa Clara</option>
+                    <option value="SF">San Francisco</option>
+                    <option value="SR">Contra Costa</option>
+                    <option value="SC">Santa Clara</option>
                 </select>
-                <select name="Tract" id="" class="selectpicker col-md-5 col-md-offset-1">
+                <select name="Tract" id="tractDropdown" class="selectpicker col-md-5 col-md-offset-1">
                     <option value="Tract" disabled>Tract</option>
-                    <option value="option1">Option1</option>
                 </select>
             </row>
         </div>
     </div>
 </row>
 
+
+<script>
+    function configureDropDownLists(countyDropdown,tractDropdown) {
+        var tracts = {{ countyTractMap | safe }};
+        var json = JSON.parse(tracts);
+        SFTracts = json['SF'];
+        SCTracts = json['SC'];
+        SRTracts = json['SR'];
+        console.log(SRTracts);
+
+        switch (countyDropdown.value) {
+            case 'SR':
+                tractDropdown.options.length = SRTracts.length;
+                for (i = 0; i < SRTracts.length; i++) {
+                    createOption(tractDropdown, SRTracts[i], SRTracts[i]);
+                }
+                break;
+            /*case 'SF':
+                tractDropdown.options.length = (int){{countyTractMap}}["SF"];
+                for (i = 0; i < shapes.length; i++) {
+                createOption(ddl2, shapes[i], shapes[i]);
+                }
+                break;
+            case 'SC':
+                tractDropdown.options.length = (int){{countyTractMap}}["SC"];
+                for (i = 0; i < names.length; i++) {
+                    createOption(ddl2, names[i], names[i]);
+                }
+                break;
+                */
+            default:
+                tractDropdown.options.length = 0;
+                break;
+        }
+
+    }
+
+    function createOption(ddl, text, value) {
+        var opt = document.createElement('option');
+        opt.value = value;
+        opt.text = text;
+        ddl.options.add(opt);
+    }
+</script>
 <row>
     <div class="col-md-10 col-md-offset-1 col-xs-12 text-center">
         <div class="jumbotron">
