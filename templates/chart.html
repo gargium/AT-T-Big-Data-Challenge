@@ -7,104 +7,73 @@
 {% block body %}
 <row>
     <div class="col-md-10 col-md-offset-1 col-xs-12 text-center">
-        <div class="jumbotron">
-            <h3>Select county and tract to analyze</h3>
-            <hr class="col-md-10 col-md-offset-1">
-            <row>
-                <select name="County" id="countyDropdown" class="selectpicker col-md-5 col-md-offset-1" onchange="configureDropDownLists()">
-                    <option value="County" disabled>County</option>
-                    <option value="SF">San Francisco</option>
-                    <option value="SR">Contra Costa</option>
-                    <option value="SC">Santa Clara</option>
-                </select>
-                <select name="Tract" id="tractDropdown" class="selectpicker col-md-5 col-md-offset-1">
-                    <option value="Tract" disabled>Tract</option>
-                </select>
-            </row>
-        </div>
-    </div>
-</row>
-
-<row>
-    <div class="col-md-10 col-md-offset-1 col-xs-12 text-center">
-        <div class="jumbotron">
-            <h3>Analyze</h3>
-            <hr class="col-md-10 col-md-offset-1">
-            <select name="factors" id="" class="selectpicker col-md-5 col-md-offset-1">
-                <option value="factors" disabled>Factors</option>
-                <option value="householdIncome">Household Income</option>
-                <option value="homeValue">Home Value</option>
-                <option value="schoolAPIScore">School API Score</option>
-                <option value="employmentRate">Employment Rate</option>
-                <option value="percentDegreeHolder">Percent with College Degrees</option>
+        <h3>Select county and tract to analyze</h3>
+        <hr class="col-md-10 col-md-offset-1">
+        <row>
+            <select name="County" id="countyDropdown" class="selectpicker col-md-5 col-md-offset-1" onchange="configureDropDownLists()">
+                <option value="County" disabled>County</option>
+                <option value="SF">San Francisco</option>
+                <option value="SR">Contra Costa</option>
+                <option value="SC">Santa Clara</option>
             </select>
-            <div class="col-md-10 col-md-offset-1">
-                <h1>Income Level Chart</h1><!-- bar chart canvas element -->
-                <canvas id="chart" width="10000" height="600"></canvas>
-            </div>
-        </div>
+            <select name="Tract" id="tractDropdown" class="selectpicker col-md-5 col-md-offset-1" onchange="location.reload()">
+                <option value="Tract" disabled>Tract</option>
+            </select>
+        </row>
     </div>
 </row>
 
 <row>
     <div class="col-md-10 col-md-offset-1 col-xs-12 text-center">
-        <div class="jumbotron">
-            <h3>[BSI] = <span>93939 (Super Duper)</span></h3>
-        </div>
+        <h3>Analyze</h3>
+        <hr class="col-md-10 col-md-offset-1">
+        <select name="factors" id="" class="selectpicker col-md-6 col-md-offset-3">
+            <option value="factors" disabled>Factors</option>
+            <option value="householdIncome">Household Income</option>
+            <option value="homeValue">Home Value</option>
+            <option value="schoolAPIScore">School API Score</option>
+            <option value="employmentRate">Employment Rate</option>
+            <option value="percentDegreeHolder">Percent with College Degrees</option>
+        </select>
     </div>
 </row>
+
+<row>
+    <div class="col-md-10 col-md-offset-1 col-xs-12 text-center">
+        <h3>[BSI] = <span>93939 (Super Duper)</span></h3>
+    </div>
+</row>
+
+<row>
+    <div class="col-md-10 col-md-offset-1">
+        <h1>Income Level Chart</h1><!-- bar chart canvas element -->
+        <canvas id="chart" width="10000" height="600"></canvas>
+    </div>
+</row>
+
 {% endblock %}
 
 {% block spells %}
 <script>
     function configureDropDownLists() {
         var tracts = {{ countyTractMap | safe }};
-        console.log("test");
-        var json = JSON.parse(tracts);
-        console.log(json);
-        SFTracts = json['SF'];
-        console.log(SFTracts);
-        SCTracts = json['SC'];
-        SRTracts = json['SR'];
 
-        switch (countyDropdown.value) {
-            case 'SR':
-                tractDropdown.options.length = SRTracts.length;
-                for (i = 0; i < SRTracts.length; i++) {
-                    createOption(tractDropdown, SRTracts[i], SRTracts[i]);
-                }
-                break;
-            /*case 'SF':
-                tractDropdown.options.length = (int){{countyTractMap}}["SF"];
-                for (i = 0; i < shapes.length; i++) {
-                createOption(ddl2, shapes[i], shapes[i]);
-                }
-                break;
-            case 'SC':
-                tractDropdown.options.length = (int){{countyTractMap}}["SC"];
-                for (i = 0; i < names.length; i++) {
-                    createOption(ddl2, names[i], names[i]);
-                }
-                break;
-                */
-            default:
-                tractDropdown.options.length = 0;
-                break;
-        }
-
-    }
-
-    function createOption(ddl, text, value) {
-        var opt = document.createElement('option');
-        opt.value = value;
-        opt.text = text;
-        ddl.options.add(opt);
+        var county = tracts[countyDropdown.value];
+        tractDropdown.options.length = 0;
+        Object.keys(county).forEach(function(value) {
+            val = county[value];
+            var x = document.getElementById("tractDropdown");
+            var option = document.createElement("option");
+            option.text = val;
+            option.value = val;
+            x.options.add(option);
+        });
     }
 </script>
 
 <script>
-   // bar chart data
-   var barData = {
+    // bar chart data
+    var barData = {
        labels : [{% for item in labels %}
                       "{{item}}",
                   {% endfor %}],
@@ -118,15 +87,15 @@
                         {% endfor %}]
           }
        ]
-   }
+    }
 
-   // get bar chart canvas
-   var mychart = document.getElementById("chart").getContext("2d");
+    // get bar chart canvas
+    var mychart = document.getElementById("chart").getContext("2d");
 
-   steps = 10
-   max = 1500000
-   // draw bar chart
-   new Chart(mychart).Bar(barData, {
+    steps = 10
+    max = 1500000
+    // draw bar chart
+    new Chart(mychart).Bar(barData, {
         scaleOverride: true,
         scaleSteps: steps,
         scaleStepWidth: Math.ceil(max / steps),
@@ -135,9 +104,9 @@
         scaleShowGridLines : true,
         barShowStroke : true,
         scaleShowLabels: true
-   });
+    });
 
-   var scatterChart = new Chart(ctx, {
+    var scatterChart = new Chart(ctx, {
         type: 'line',
         data: {
             datasets: [{
@@ -163,6 +132,5 @@
             }
         }
     });
- 
 </script>
 {% endblock %}

@@ -19,11 +19,8 @@ def chart1():
 
     countyToTractMap = {}
     countyToTractMap["SR"] = bayArea.get_tracts("SR")
-    print len(countyToTractMap)
     countyToTractMap["SF"] = bayArea.get_tracts("SF")
-    print len(countyToTractMap)
     countyToTractMap["SC"] = bayArea.get_tracts("SC")
-    print len(countyToTractMap)
 
     incomeValues = incomeList
     priceValues = priceList
