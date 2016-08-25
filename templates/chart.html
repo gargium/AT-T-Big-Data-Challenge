@@ -11,7 +11,7 @@
             <h3>Select county and tract to analyze</h3>
             <hr class="col-md-10 col-md-offset-1">
             <row>
-                <select name="County" id="countyDropdown" class="selectpicker col-md-5 col-md-offset-1">
+                <select name="County" id="countyDropdown" class="selectpicker col-md-5 col-md-offset-1" onchange="configureDropDownLists()">
                     <option value="County" disabled>County</option>
                     <option value="SF">San Francisco</option>
                     <option value="SR">Contra Costa</option>
@@ -25,32 +25,47 @@
     </div>
 </row>
 
+<row>
+    <div class="col-md-10 col-md-offset-1 col-xs-12 text-center">
+        <div class="jumbotron">
+            <h3>Analyze</h3>
+            <hr class="col-md-10 col-md-offset-1">
+            <select name="factors" id="" class="selectpicker col-md-5 col-md-offset-1">
+                <option value="factors" disabled>Factors</option>
+                <option value="householdIncome">Household Income</option>
+                <option value="homeValue">Home Value</option>
+                <option value="schoolAPIScore">School API Score</option>
+                <option value="employmentRate">Employment Rate</option>
+                <option value="percentDegreeHolder">Percent with College Degrees</option>
+            </select>
+            <div class="col-md-10 col-md-offset-1">
+                <h1>Income Level Chart</h1><!-- bar chart canvas element -->
+                <canvas id="chart" width="10000" height="600"></canvas>
+            </div>
+        </div>
+    </div>
+</row>
 
+<row>
+    <div class="col-md-10 col-md-offset-1 col-xs-12 text-center">
+        <div class="jumbotron">
+            <h3>[BSI] = <span>93939 (Super Duper)</span></h3>
+        </div>
+    </div>
+</row>
+{% endblock %}
+
+{% block spells %}
 <script>
-    function configureDropDownLists(countyDropdown,tractDropdown) {
+    function configureDropDownLists() {
         var tracts = {{ countyTractMap | safe }};
+        console.log("test");
         var json = JSON.parse(tracts);
+        console.log(json);
         SFTracts = json['SF'];
+        console.log(SFTracts);
         SCTracts = json['SC'];
         SRTracts = json['SR'];
-        console.log(SRTracts);
-
-        if (true){
-        try{
-        console.log ("suh homei");
-            a=JSON.parse(tracts);
-        }catch(e){
-            alert(e); //error in the above string(in this case,yes)!
-        }
-
-          try {
-            messageObject = JSON.parse(message);
-          } catch (e) {
-            return console.error(e);
-          }
-
-}
-
 
         switch (countyDropdown.value) {
             case 'SR':
@@ -86,35 +101,6 @@
         ddl.options.add(opt);
     }
 </script>
-<row>
-    <div class="col-md-10 col-md-offset-1 col-xs-12 text-center">
-        <div class="jumbotron">
-            <h3>Analyze</h3>
-            <hr class="col-md-10 col-md-offset-1">
-            <select name="factors" id="" class="selectpicker col-md-5 col-md-offset-1">
-                <option value="factors" disabled>Factors</option>
-                <option value="householdIncome">Household Income</option>
-                <option value="homeValue">Home Value</option>
-                <option value="schoolAPIScore">School API Score</option>
-                <option value="employmentRate">Employment Rate</option>
-                <option value="percentDegreeHolder">Percent with College Degrees</option>
-            </select>
-            <div class="col-md-10 col-md-offset-1">
-                <h1>Income Level Chart</h1><!-- bar chart canvas element -->
-                <canvas id="chart" width="10000" height="600"></canvas>
-            </div>
-        </div>
-    </div>
-</row>
-
-<row>
-    <div class="col-md-10 col-md-offset-1 col-xs-12 text-center">
-        <div class="jumbotron">
-            <h3>[BSI] = <span>93939 (Super Duper)</span></h3>
-        </div>
-    </div>
-</row>
-
 
 <script>
    // bar chart data
@@ -179,5 +165,4 @@
     });
  
 </script>
-
 {% endblock %}

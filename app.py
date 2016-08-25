@@ -17,33 +17,13 @@ def chart1():
     priceList = []
     censusTractList = []
 
-    with open('static/Data/sanFrancisco/sanFrancisco2010.geojson') as sf2010:
-        sf2010Data = json.load(sf2010)
-
-    # for a in range(len(sf2010Data["features"])):
-    #     if income in sf2010Data["features"][a]["properties"]:
-    #         print sf2010Data["features"][a]["properties"][income]
-    #         incomeList.append(sf2010Data["features"][a]["properties"][income])
-    #
-    # for b in range(len(sf2010Data["features"])):
-    #     if price in sf2010Data["features"][b]["properties"]:
-    #         print sf2010Data["features"][b]["properties"][price]
-    #         priceList.append(sf2010Data["features"][b]["properties"][price])
-    #
-    # for c in range(len(sf2010Data["features"])):
-    #     if censusTract in sf2010Data["features"][c]["properties"]:
-    #         print sf2010Data["features"][c]["properties"][censusTract]
-    #         censusTractList.append(sf2010Data["features"][c]["properties"][censusTract])
-
     countyToTractMap = {}
     countyToTractMap["SR"] = bayArea.get_tracts("SR")
-    print countyToTractMap
+    print len(countyToTractMap)
     countyToTractMap["SF"] = bayArea.get_tracts("SF")
-    print countyToTractMap
+    print len(countyToTractMap)
     countyToTractMap["SC"] = bayArea.get_tracts("SC")
-    print countyToTractMap
-
-
+    print len(countyToTractMap)
 
     incomeValues = incomeList
     priceValues = priceList
