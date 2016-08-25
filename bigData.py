@@ -15,6 +15,12 @@ class bayArea:
 		"SC": {}
 	}
 
+	bsi = {
+		"SF": {},
+		"SR": {},
+		"SC": {}
+	}
+
 	bayArea = {
 		"SF": {
 			"2010": {
@@ -127,3 +133,6 @@ class bayArea:
 	def count_tracts(self):
 		for county in self.tracts:
 			print county, len(self.tracts[county].keys())
+
+	def set_bsi(self, county, tract, bsi):
+		self.bsi[county][tract] = bsi
