@@ -18,7 +18,7 @@ def chart1():
     priceList = []
     censusTractList = []
 
-    with open('Data/2010/sanFrancisco2010.geojson') as sf2010:
+    with open('static/Data/sanFrancisco/sanFrancisco2010.geojson') as sf2010:
         sf2010Data = json.load(sf2010)
 
     for a in range(len(sf2010Data["features"])):
