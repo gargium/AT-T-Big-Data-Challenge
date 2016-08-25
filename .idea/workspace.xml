@@ -2,8 +2,48 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="8643e526-105e-4524-9c70-008f99b8fd82" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Data/algorithm.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/chart.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/profiles_settings.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/Data/2010/__init__.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/Data/2011/__init__.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/Data/2012/__init__.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/Data/2013/__init__.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/Data/2014/__init__.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/Data/__init__.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/__init__.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/templates/map.html" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/Data/2010/censusSanFrancisco2010.py" afterPath="$PROJECT_DIR$/static/Data/2010/censusSanFrancisco2010.py" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/Data/2010/censusSanRamon2010.py" afterPath="$PROJECT_DIR$/static/Data/2010/censusSanRamon2010.py" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/Data/2010/censusSantaClara2010.py" afterPath="$PROJECT_DIR$/static/Data/2010/censusSantaClara2010.py" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/Data/2010/sanFrancisco2010.geojson" afterPath="$PROJECT_DIR$/static/Data/2010/sanFrancisco2010.geojson" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/Data/2010/sanRamon2010.geojson" afterPath="$PROJECT_DIR$/static/Data/2010/sanRamon2010.geojson" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/Data/2010/santaClara2010.geojson" afterPath="$PROJECT_DIR$/static/Data/2010/santaClara2010.geojson" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/Data/2011/censusSanFrancisco2011.py" afterPath="$PROJECT_DIR$/static/Data/2011/censusSanFrancisco2011.py" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/Data/2011/censusSanRamon2011.py" afterPath="$PROJECT_DIR$/static/Data/2011/censusSanRamon2011.py" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/Data/2011/censusSantaClara2011.py" afterPath="$PROJECT_DIR$/static/Data/2011/censusSantaClara2011.py" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/Data/2011/sanFrancisco2011.geojson" afterPath="$PROJECT_DIR$/static/Data/2011/sanFrancisco2011.geojson" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/Data/2011/sanRamon2011.geojson" afterPath="$PROJECT_DIR$/static/Data/2011/sanRamon2011.geojson" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/Data/2011/santaClara2011.geojson" afterPath="$PROJECT_DIR$/static/Data/2011/santaClara2011.geojson" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/Data/2012/censusSanFrancisco2012.py" afterPath="$PROJECT_DIR$/static/Data/2012/censusSanFrancisco2012.py" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/Data/2012/censusSanRamon2012.py" afterPath="$PROJECT_DIR$/static/Data/2012/censusSanRamon2012.py" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/Data/2012/censusSantaClara2012.py" afterPath="$PROJECT_DIR$/static/Data/2012/censusSantaClara2012.py" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/Data/2012/sanFrancisco2012.geojson" afterPath="$PROJECT_DIR$/static/Data/2012/sanFrancisco2012.geojson" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/Data/2012/sanRamon2012.geojson" afterPath="$PROJECT_DIR$/static/Data/2012/sanRamon2012.geojson" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/Data/2012/santaClara2012.geojson" afterPath="$PROJECT_DIR$/static/Data/2012/santaClara2012.geojson" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/Data/2013/censusSanFrancisco2013.py" afterPath="$PROJECT_DIR$/static/Data/2013/censusSanFrancisco2013.py" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/Data/2013/censusSanRamon2013.py" afterPath="$PROJECT_DIR$/static/Data/2013/censusSanRamon2013.py" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/Data/2013/censusSantaClara2013.py" afterPath="$PROJECT_DIR$/static/Data/2013/censusSantaClara2013.py" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/Data/2013/sanFrancisco2013.geojson" afterPath="$PROJECT_DIR$/static/Data/2013/sanFrancisco2013.geojson" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/Data/2013/sanRamon2013.geojson" afterPath="$PROJECT_DIR$/static/Data/2013/sanRamon2013.geojson" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/Data/2013/santaClara2013.geojson" afterPath="$PROJECT_DIR$/static/Data/2013/santaClara2013.geojson" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/Data/2014/censusSanFrancisco2014.py" afterPath="$PROJECT_DIR$/static/Data/2014/censusSanFrancisco2014.py" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/Data/2014/censusSanRamon2014.py" afterPath="$PROJECT_DIR$/static/Data/2014/censusSanRamon2014.py" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/Data/2014/censusSantaClara2014.py" afterPath="$PROJECT_DIR$/static/Data/2014/censusSantaClara2014.py" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/Data/2014/sanFrancisco2014.geojson" afterPath="$PROJECT_DIR$/static/Data/2014/sanFrancisco2014.geojson" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/Data/2014/sanRamon2014.geojson" afterPath="$PROJECT_DIR$/static/Data/2014/sanRamon2014.geojson" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/Data/2014/santaClara2014.geojson" afterPath="$PROJECT_DIR$/static/Data/2014/santaClara2014.geojson" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/Data/algorithm.py" afterPath="$PROJECT_DIR$/static/Data/algorithm.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app.py" afterPath="$PROJECT_DIR$/app.py" />
     </list>
     <ignored path="ATT-Big-Data-Challenge.iws" />
@@ -31,18 +71,18 @@
       <file leaf-file-name="chart.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/templates/chart.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="450">
-              <caret line="30" column="0" selection-start-line="30" selection-start-column="0" selection-end-line="30" selection-end-column="0" />
+            <state relative-caret-position="120">
+              <caret line="8" column="0" selection-start-line="8" selection-start-column="0" selection-end-line="8" selection-end-column="0" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
       <file leaf-file-name="algorithm.py" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/Data/algorithm.py">
+        <entry file="file://$PROJECT_DIR$/static/Data/algorithm.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="854">
-              <caret line="83" column="0" selection-start-line="83" selection-start-column="0" selection-end-line="83" selection-end-column="0" />
+            <state relative-caret-position="210">
+              <caret line="14" column="0" selection-start-line="14" selection-start-column="0" selection-end-line="14" selection-end-column="0" />
               <folding>
                 <element signature="e#0#12#0" expanded="true" />
               </folding>
@@ -53,8 +93,18 @@
       <file leaf-file-name="app.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="375">
-              <caret line="25" column="15" selection-start-line="25" selection-start-column="15" selection-end-line="25" selection-end-column="15" />
+            <state relative-caret-position="304">
+              <caret line="48" column="120" selection-start-line="48" selection-start-column="120" selection-end-line="48" selection-end-column="120" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="map.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/templates/map.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="104">
+              <caret line="18" column="24" selection-start-line="18" selection-start-column="24" selection-end-line="18" selection-end-column="24" />
               <folding />
             </state>
           </provider>
@@ -63,14 +113,22 @@
       <file leaf-file-name="chart.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/chart.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="90">
-              <caret line="6" column="20" selection-start-line="6" selection-start-column="20" selection-end-line="6" selection-end-column="20" />
+            <state relative-caret-position="180">
+              <caret line="12" column="25" selection-start-line="12" selection-start-column="25" selection-end-line="12" selection-end-column="25" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
     </leaf>
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="HTML File" />
+        <option value="Python Script" />
+      </list>
+    </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -79,9 +137,10 @@
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/chart.py" />
-        <option value="$PROJECT_DIR$/app.py" />
         <option value="$PROJECT_DIR$/templates/chart.html" />
         <option value="$PROJECT_DIR$/Data/algorithm.py" />
+        <option value="$PROJECT_DIR$/app.py" />
+        <option value="$PROJECT_DIR$/templates/map.html" />
       </list>
     </option>
   </component>
@@ -98,8 +157,8 @@
   <component name="ProjectFrameBounds">
     <option name="x" value="10" />
     <option name="y" value="20" />
-    <option name="width" value="1831" />
-    <option name="height" value="1008" />
+    <option name="width" value="1260" />
+    <option name="height" value="720" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="false">
     <OptionsSetting value="true" id="Add" />
@@ -183,6 +242,10 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
+              <option name="myItemId" value="static" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
               <option name="myItemId" value="Data" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
@@ -194,6 +257,10 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="ATT-Big-Data-Challenge" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="static" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
@@ -215,9 +282,15 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="HbShouldOpenHtmlAsHb" value="" />
     <property name="nodejs_interpreter_path" value="/usr/local/bin/node" />
-    <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
+    <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
     <property name="settings.editor.splitter.proportion" value="0.2" />
     <property name="js-jscs-nodeInterpreter" value="/usr/local/bin/node" />
+    <property name="DefaultHtmlFileTemplate" value="HTML File" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/static" />
+    </key>
   </component>
   <component name="RunManager">
     <configuration default="true" type="DjangoTestsConfigurationType" factoryName="Django tests">
@@ -447,12 +520,12 @@
     <option name="totallyTimeSpent" value="149000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="10" y="20" width="1831" height="1008" extended-state="0" />
-    <editor active="false" />
+    <frame x="10" y="20" width="1260" height="720" extended-state="0" />
+    <editor active="true" />
     <layout>
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.17203714" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.0" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
@@ -534,7 +607,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Data/2010/sanFrancisco2010.geojson">
+    <entry file="file://$PROJECT_DIR$/static/Data/2010/sanFrancisco2010.geojson">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
@@ -557,34 +630,50 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app.py">
+    <entry file="file://$PROJECT_DIR$/chart.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="375">
-          <caret line="25" column="15" selection-start-line="25" selection-start-column="15" selection-end-line="25" selection-end-column="15" />
+        <state relative-caret-position="180">
+          <caret line="12" column="25" selection-start-line="12" selection-start-column="25" selection-end-line="12" selection-end-column="25" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/chart.py">
+    <entry file="file://$PROJECT_DIR$/static/Data/__init__.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="90">
-          <caret line="6" column="20" selection-start-line="6" selection-start-column="20" selection-end-line="6" selection-end-column="20" />
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/templates/chart.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="450">
-          <caret line="30" column="0" selection-start-line="30" selection-start-column="0" selection-end-line="30" selection-end-column="0" />
+        <state relative-caret-position="120">
+          <caret line="8" column="0" selection-start-line="8" selection-start-column="0" selection-end-line="8" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Data/algorithm.py">
+    <entry file="file://$PROJECT_DIR$/app.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="854">
-          <caret line="83" column="0" selection-start-line="83" selection-start-column="0" selection-end-line="83" selection-end-column="0" />
+        <state relative-caret-position="304">
+          <caret line="48" column="120" selection-start-line="48" selection-start-column="120" selection-end-line="48" selection-end-column="120" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/map.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="104">
+          <caret line="18" column="24" selection-start-line="18" selection-start-column="24" selection-end-line="18" selection-end-column="24" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/static/Data/algorithm.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="210">
+          <caret line="14" column="0" selection-start-line="14" selection-start-column="0" selection-end-line="14" selection-end-column="0" />
           <folding>
             <element signature="e#0#12#0" expanded="true" />
           </folding>
