@@ -43,5 +43,10 @@ def chart1():
     # values = [10,9,8,7,6,4,7,8]
     return render_template('chart.html', values=priceValues, labels=censusTractValues)
 
+@app.route("/map")
+def map():
+    return render_template('map.html', urlSF='static/Data/2010/sanFrancisco2010.geojson',
+                           urlSR='static/Data/2010/sanRamon2010.geojson', urlSC='static/Data/2010/santaClara2010.geojson')
+
 if __name__ == "__main__":
-	app.run()
+	app.run(debug=True)

@@ -3,10 +3,6 @@ from scipy import stats
 
 # todo: fudge the data and say that the 2009 api scores were 2010 and onward so we have something for 2014
 
-
-
-
-
 homeValues = []
 incomeValues = []
 APIValues = [][]
