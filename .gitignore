@@ -6,3 +6,4 @@
 
 # File Types to Ignore #
 *.log
+*.DS_Store

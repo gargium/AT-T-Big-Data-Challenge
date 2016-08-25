@@ -41,8 +41,8 @@ def chart1():
 
 @app.route("/map")
 def map():
-    return render_template('map.html', urlSF='static/Data/2010/sanFrancisco2010.geojson',
-                           urlSR='static/Data/2010/sanRamon2010.geojson', urlSC='static/Data/2010/santaClara2010.geojson')
+    return render_template('map.html', urlSF='static/Data/sanFrancisco/sanFrancisco2010.geojson',
+                           urlSR='static/Data/sanRamon/sanRamon2010.geojson', urlSC='static/Data/santaClara/santaClara2010.geojson')
 
 @app.route("/about/")
 def about():
