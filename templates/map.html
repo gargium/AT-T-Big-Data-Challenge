@@ -1,8 +1,17 @@
 {% extends "layout.html" %}
 
 {% block body %}
-<h3>Green means boom, red means bust</h3>
 <div id="map"></div>
+<div class="col-md-12 text-center legend">
+  <span style="color: DarkGreen">Excellent</span>
+  <span style="color: YellowGreen">Good</span>
+  <span style="color: Yellow">Moderate</span>
+  <span style="color: Orange">Below Average</span>
+  <span style="color: OrangeRed">Bad</span>
+  <span style="color: DarkRed">Very Bad</span>
+</div>
+
+
 <script>
 
   var map;
