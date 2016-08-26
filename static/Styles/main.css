@@ -7,3 +7,11 @@ html, body {
 #map {
   height: 80%;
 }
+
+.legend {
+  background-color: lightgrey;
+}
+
+.legend span {
+  padding-right: 10px;
+}
