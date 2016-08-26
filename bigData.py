@@ -9,6 +9,9 @@ class bayArea:
 	sf = db.sanFrancisco.find({})
 	sc = db.santaClara.find({})
 
+	county = ["SF", "SR", "SC"]
+	database = [sf, sr, sc]
+
 	tracts = {
 		"SF": {},
 		"SR": {},
@@ -91,29 +94,15 @@ class bayArea:
 	}
 
 	def __init__(self):
-		for i in range(self.sr.count()):
-			for tract in self.sr[i]["features"]:
-				id = tract["properties"]["tract"]
-				name = tract["properties"]["name"]
-				self.bayArea["SR"][str(i+2010)]["income"][id] = tract["properties"].get(self.income, "No Income Data Available")
-				self.bayArea["SR"][str(i+2010)]["price"][id] = tract["properties"].get(self.price, "No Price Data Available")
-				self.tracts["SR"][id] = name
-
-		for i in range(self.sf.count()):
-			for tract in self.sf[i]["features"]:
-				id = tract["properties"]["tract"]
-				name = tract["properties"]["name"]
-				self.bayArea["SF"][str(i+2010)]["income"][id] = tract["properties"].get(self.income, "No Income Data Available")
-				self.bayArea["SF"][str(i+2010)]["price"][id] = tract["properties"].get(self.price, "No Price Data Available")
-				self.tracts["SF"][id] = name
-
-		for i in range(self.sc.count()):
-			for tract in self.sc[i]["features"]:
-				id = tract["properties"]["tract"]
-				name = tract["properties"]["name"]
-				self.bayArea["SC"][str(i+2010)]["income"][id] = tract["properties"].get(self.income, "No Income Data Available")
-				self.bayArea["SC"][str(i+2010)]["price"][id] = tract["properties"].get(self.price, "No Price Data Available")
-				self.tracts["SC"][id] = name
+		for j in range(len(self.database)):
+			db = self.database[j];
+			for i in range(db.count()):
+				for tract in db[i]["features"]:
+					id = tract["properties"]["tract"]
+					name = tract["properties"]["name"]
+					self.bayArea[self.county[j]][str(i+2010)]["income"][id] = tract["properties"].get(self.income, "No Income Data Available")
+					self.bayArea[self.county[j]][str(i+2010)]["price"][id] = tract["properties"].get(self.price, "No Price Data Available")
+					self.tracts[self.county[j]][id] = name
 
 	def get_bay_area(self):
 		return self.bayArea
