@@ -12,15 +12,16 @@
             <hr class="col-md-10 col-md-offset-1">
             <row>
                 <select name="County" id="countyDropdown" class="selectpicker col-xs-3 col-xs-offset-1" onchange="setTracts()">
-                    <option value="County" disabled>County</option>
+                    <option value="" disabled selected>County</option>
                     <option value="SF">San Francisco</option>
                     <option value="SR">Contra Costa</option>
                     <option value="SC">Santa Clara</option>
                 </select>
                 <select name="Tract" id="tractDropdown" class="selectpicker col-xs-2 col-xs-offset-1" onchange="loadData()">
-                    <option value="Tract" disabled>Tract</option>
+                    <option value="" disabled selected>Tract</option>
                 </select>
                 <select name="factors" id="factorDropdown" class="selectpicker col-xs-3 col-xs-offset-1" onchange="loadData()">
+                    <option value="" disabled selected>Factors</option>
                     <option value="income">Household Income</option>
                     <option value="price">Home Value</option>
                 </select>
