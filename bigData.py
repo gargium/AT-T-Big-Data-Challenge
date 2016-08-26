@@ -96,7 +96,7 @@ class bayArea:
 				id = tract["properties"]["tract"]
 				name = tract["properties"]["name"]
 				self.bayArea["SR"][str(i+2010)]["income"][id] = tract["properties"].get(self.income, "No Income Data Available")
-				self.bayArea["SR"][str(i+2010)]["price"][id] = tract["properties"].get(self.price, "No Price Data Avaialbe")
+				self.bayArea["SR"][str(i+2010)]["price"][id] = tract["properties"].get(self.price, "No Price Data Available")
 				self.tracts["SR"][id] = name
 
 		for i in range(self.sf.count()):
@@ -104,7 +104,7 @@ class bayArea:
 				id = tract["properties"]["tract"]
 				name = tract["properties"]["name"]
 				self.bayArea["SF"][str(i+2010)]["income"][id] = tract["properties"].get(self.income, "No Income Data Available")
-				self.bayArea["SF"][str(i+2010)]["price"][id] = tract["properties"].get(self.price, "No Price Data Avaialbe")
+				self.bayArea["SF"][str(i+2010)]["price"][id] = tract["properties"].get(self.price, "No Price Data Available")
 				self.tracts["SF"][id] = name
 
 		for i in range(self.sc.count()):
@@ -112,7 +112,7 @@ class bayArea:
 				id = tract["properties"]["tract"]
 				name = tract["properties"]["name"]
 				self.bayArea["SC"][str(i+2010)]["income"][id] = tract["properties"].get(self.income, "No Income Data Available")
-				self.bayArea["SC"][str(i+2010)]["price"][id] = tract["properties"].get(self.price, "No Price Data Avaialbe")
+				self.bayArea["SC"][str(i+2010)]["price"][id] = tract["properties"].get(self.price, "No Price Data Available")
 				self.tracts["SC"][id] = name
 
 	def get_bay_area(self):
@@ -136,3 +136,6 @@ class bayArea:
 
 	def set_bsi(self, county, tract, bsi):
 		self.bsi[county][tract] = bsi
+
+	def get_bsi(self, county, tract):
+		return self.bsi[county][tract]
