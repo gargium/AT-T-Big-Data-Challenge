@@ -1,5 +1,7 @@
 from flask import Flask, render_template, Markup, json
+from bigData import bayArea
 app = Flask(__name__)
+bayArea = bayArea()
 
 @app.route("/")
 def index():
