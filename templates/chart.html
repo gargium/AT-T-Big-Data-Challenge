@@ -5,132 +5,85 @@
 {% endblock %}
 
 {% block body %}
-<row>
-    <div class="col-md-10 col-md-offset-1 col-xs-12 text-center">
-        <h3>Select county and tract to analyze</h3>
-        <hr class="col-md-10 col-md-offset-1">
-        <row>
-            <select name="County" id="countyDropdown" class="selectpicker col-md-5 col-md-offset-1" onchange="configureDropDownLists()">
-                <option value="County" disabled>County</option>
-                <option value="SF">San Francisco</option>
-                <option value="SR">Contra Costa</option>
-                <option value="SC">Santa Clara</option>
-            </select>
-            <select name="Tract" id="tractDropdown" class="selectpicker col-md-5 col-md-offset-1" onchange="location.reload()">
-                <option value="Tract" disabled>Tract</option>
-            </select>
-        </row>
-    </div>
-</row>
+<div class="col-xs-12">
+    <row>
+        <div class="col-md-10 col-md-offset-1 col-xs-12 text-center">
+            <h3>Select county and tract to analyze</h3>
+            <hr class="col-md-10 col-md-offset-1">
+            <row>
+                <select name="County" id="countyDropdown" class="selectpicker col-xs-3 col-xs-offset-1" onchange="setTracts()">
+                    <option value="County" disabled>County</option>
+                    <option value="SF">San Francisco</option>
+                    <option value="SR">Contra Costa</option>
+                    <option value="SC">Santa Clara</option>
+                </select>
+                <select name="Tract" id="tractDropdown" class="selectpicker col-xs-2 col-xs-offset-1" onchange="loadData()">
+                    <option value="Tract" disabled>Tract</option>
+                </select>
+                <select name="factors" id="factorDropdown" class="selectpicker col-xs-3 col-xs-offset-1" onchange="loadData()">
+                    <option value="income">Household Income</option>
+                    <option value="price">Home Value</option>
+                </select>
+            </row>
+        </div>
+    </row>
 
-<row>
-    <div class="col-md-10 col-md-offset-1 col-xs-12 text-center">
-        <h3>Analyze</h3>
-        <hr class="col-md-10 col-md-offset-1">
-        <select name="factors" id="" class="selectpicker col-md-6 col-md-offset-3">
-            <option value="factors" disabled>Factors</option>
-            <option value="householdIncome">Household Income</option>
-            <option value="homeValue">Home Value</option>
-            <option value="schoolAPIScore">School API Score</option>
-            <option value="employmentRate">Employment Rate</option>
-            <option value="percentDegreeHolder">Percent with College Degrees</option>
-        </select>
-    </div>
-</row>
+    <row>
+        <div class="col-md-10 col-md-offset-1 col-xs-12 text-center">
+            <h3>[BSI] = <span>93939 (Super Duper)</span></h3>
+        </div>
+    </row>
 
-<row>
-    <div class="col-md-10 col-md-offset-1 col-xs-12 text-center">
-        <h3>[BSI] = <span>93939 (Super Duper)</span></h3>
-    </div>
-</row>
-
-<row>
-    <div class="col-md-10 col-md-offset-1">
-        <h1>Income Level Chart</h1><!-- bar chart canvas element -->
-        <canvas id="chart" width="10000" height="600"></canvas>
-    </div>
-</row>
+    <row>
+        <div class="col-md-10 col-md-offset-1 text-center">
+            <h1>Income Level Chart</h1><!-- bar chart canvas element -->
+            <canvas id="chart" width="640" height="480"></canvas>
+        </div>
+    </row>
+</div>
 
 {% endblock %}
 
 {% block spells %}
 <script>
-    function configureDropDownLists() {
+    function setTracts() {
         var tracts = {{ countyTractMap | safe }};
-
         var county = tracts[countyDropdown.value];
         tractDropdown.options.length = 0;
         Object.keys(county).forEach(function(value) {
-            val = county[value];
             var x = document.getElementById("tractDropdown");
             var option = document.createElement("option");
-            option.text = val;
-            option.value = val;
+            option.text = value;
+            option.value = value;
             x.options.add(option);
         });
     }
-</script>
 
-<script>
-    // bar chart data
-    var barData = {
-       labels : [{% for item in labels %}
-                      "{{item}}",
-                  {% endfor %}],
-       datasets : [
-          {
-            fillColor: "rgba(151,187,205,0.2)",
-            strokeColor: "rgba(151,187,205,1)",
-            pointColor: "rgba(151,187,205,1)",
-            data : [{% for item in values %}
-                          {{item}},
-                        {% endfor %}]
-          }
-       ]
+    function loadData() {
+        var ba = {{ bayArea | safe }};
+        var county = ba[countyDropdown.value];
+        var data = [];
+        for (i = 0; i < 5; i++) {
+            var n = i + 2010;
+            data.push(county[n.toString()][factorDropdown.value][tractDropdown.value])
+        }
+
+        // line chart data
+        var chartData = {
+            labels : ["2010","2011","2012","2013","2014"],
+            datasets : [
+                {
+                    fillColor : "rgba(172,194,132,0.4)",
+                    strokeColor : "#ACC26D",
+                    pointColor : "#fff",
+                    pointStrokeColor : "#9DB86D",
+                    data : data
+                }
+            ]
+        }
+        var chart = document.getElementById('chart').getContext('2d');
+        new Chart(chart).Line(chartData);
     }
 
-    // get bar chart canvas
-    var mychart = document.getElementById("chart").getContext("2d");
-
-    steps = 10
-    max = 1500000
-    // draw bar chart
-    new Chart(mychart).Bar(barData, {
-        scaleOverride: true,
-        scaleSteps: steps,
-        scaleStepWidth: Math.ceil(max / steps),
-        scaleStartValue: 0,
-        scaleShowVerticalLines: true,
-        scaleShowGridLines : true,
-        barShowStroke : true,
-        scaleShowLabels: true
-    });
-
-    var scatterChart = new Chart(ctx, {
-        type: 'line',
-        data: {
-            datasets: [{
-                label: 'Scatter Dataset',
-                data: [{
-                    x: -10,
-                    y: 0
-                }, {
-                    x: 0,
-                    y: 10
-                }, {
-                    x: 10,
-                    y: 5
-                }]
-            }]
-        },
-        options: {
-            scales: {
-                xAxes: [{
-                    type: 'linear',
-                    position: 'bottom'
-                }]
-            }
-        }
-    });
 </script>
 {% endblock %}
