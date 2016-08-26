@@ -7,20 +7,15 @@
   var map;
   function initMap() {
     map = new google.maps.Map(document.getElementById('map'), {
-<<<<<<< HEAD
-      zoom: 8.5,
-      center: {lat: 37.5, lng: -122}
-=======
       zoom: 9,
       center: {lat: 37.6, lng: -121.8}
->>>>>>> f95fdbae64462167f326d69fed31f847d46c0882
     });
 
     map.data.setStyle(function(feature) {
         var tract = feature.getProperty('TRACT');
         var color = 0;
-        if ( tract in {{ sfBSIs }} ) {
-            bsiVal = {{ sfBSIs }}[tract]
+        if ( tract in {{ sfBSIs | safe }} ) {
+            bsiVal = {{ sfBSIs | safe }}[tract]
             if ( bsiVal > 0.5)
                 color = 'green';
             else if ( bsiVal > 0 )
@@ -32,8 +27,8 @@
             color = 'grey'
         }
 
-        if ( tract in {{ scBSIs }} ) {
-            bsiVal = {{ scBSIs }}[tract]
+        if ( tract in {{ scBSIs | safe }} ) {
+            bsiVal = {{ scBSIs | safe }}[tract]
             if ( bsiVal > 0.5)
                 color = 'green';
             else if ( bsiVal > 0 )
@@ -45,10 +40,17 @@
             color = 'grey'
         }
 
-         if ( tract in {{ srBSIs }} ) {
-            //color logic
+         if ( tract in {{ srBSIs | safe }} ) {
+            bsiVal = {{ srBSIs | safe }}[tract]
+            if ( bsiVal > 0.5)
+                color = 'green';
+            else if ( bsiVal > 0 )
+                color = 'yellow';
+            else if ( bsiVal > -.5 )
+                color = 'orange';
+            else color = 'red';
         } else {
-            //color it gray
+            color = 'grey'
         }
     return {
       fillColor: color,

@@ -25,6 +25,9 @@ def map():
     SFBSIs = algorithm.BSI("SF")
     SCBSIs = algorithm.BSI("SC")
     SRBSIs = algorithm.BSI("SR")
+    print SFBSIs
+    print SCBSIs
+    print SRBSIs
     return render_template('map.html', urlSF='static/Data/sanFrancisco/sanFrancisco2010.geojson',
                            urlSR='static/Data/sanRamon/sanRamon2010.geojson',
                            urlSC='static/Data/santaClara/santaClara2010.geojson',
