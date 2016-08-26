@@ -25,12 +25,13 @@ def map():
     SFBSIs = algorithm.BSI("SF")
     SCBSIs = algorithm.BSI("SC")
     SRBSIs = algorithm.BSI("SR")
+
     return render_template('map.html', urlSF='static/Data/sanFrancisco/sanFrancisco2010.geojson',
                            urlSR='static/Data/sanRamon/sanRamon2010.geojson',
                            urlSC='static/Data/santaClara/santaClara2010.geojson',
-                           sfBSIs = SFBSIs,
-                           scBSIs = SCBSIs,
-                           srBSIs = SRBSIs)
+                           sfBSIs = json.dumps(SFBSIs),
+                           scBSIs = json.dumps(SCBSIs),
+                           srBSIs = json.dumps(SRBSIs))
 
 @app.route("/about/")
 def about():

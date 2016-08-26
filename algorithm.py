@@ -44,7 +44,7 @@ class algorithm:
 
 
     # get year over year growth rate
-    def BSI(county):
+    def BSI(self, county):
         BSIDict = {}
         tractList = []
         homeValues = []
@@ -60,7 +60,6 @@ class algorithm:
         numFac = 2.0
         tractList = bayArea.get_tracts(county)
         for key in list(tractList.keys()):
-            print key
             for i in range(2010,2015):
                 dataPrice = bayArea.get_price(county, str(i), key)
                 dataIncome = bayArea.get_income(county, str(i), key)
@@ -132,7 +131,7 @@ class algorithm:
 
                 bayArea.set_bsi(county, key, bsi)
                 BSIDict[key] = bsi
-                return BSIDict;
             # bayArea.set_bsi(county, key, bsi)
 
             # print county + ": " + " in " + key +  ", " + HVScoreFac + ", " + IncomeScoreFac
+        return BSIDict;
