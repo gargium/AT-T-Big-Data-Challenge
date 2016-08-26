@@ -20,7 +20,6 @@
         var tract = feature.getProperty('TRACT');
         var color = 0;
         var sfBSIList = {{ sfBSIs | safe }}
-        console.log(tract)
         if ( tract in sfBSIList) {
             bsiVal = sfBSIList[tract]
             if ( bsiVal > 0.5)
