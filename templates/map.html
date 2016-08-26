@@ -7,14 +7,24 @@
   var map;
   function initMap() {
     map = new google.maps.Map(document.getElementById('map'), {
-      zoom: 8,
-      center: {lat: 37.5, lng: -122}
+      zoom: 9,
+      center: {lat: 37.8, lng: -122.3}
     });
 
     // NOTE: This uses cross-domain XHR, and may not work on older browsers.
     map.data.loadGeoJson("{{urlSF}}");
     map.data.loadGeoJson("{{urlSR}}");
     map.data.loadGeoJson("{{urlSC}}");
+
+    map.data.setStyle(function(feature) {
+      var strokeColor = 'grey';
+      var fillColor = 'lightgrey';
+      return /** @type {google.maps.Data.StyleOptions} */({
+        fillColor: fillColor,
+        strokeColor: strokeColor,
+        strokeWeight: 1
+      });
+    });
 
   }
 </script>
