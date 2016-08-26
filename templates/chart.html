@@ -1,7 +1,7 @@
 {% extends "layout.html" %}
 
 {% block head %}
-<script src='../static/Chart.min.js'></script>  
+<script src='../static/Chart.min.js'></script>
 {% endblock %}
 
 {% block body %}
@@ -124,6 +124,5 @@
         var chart = document.getElementById('chart').getContext('2d');
         new Chart(chart).Line(chartData);
     }
-
 </script>
 {% endblock %}
