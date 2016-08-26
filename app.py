@@ -10,7 +10,7 @@ def chart1():
     income = "B19013_001E"
     price = "B25077_001E"
     censusTract = "NAME"
-    incomeList = []g
+    incomeList = []
     priceList = []
     censusTractList = []
 
