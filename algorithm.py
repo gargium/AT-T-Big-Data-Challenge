@@ -51,15 +51,27 @@ class algorithm:
         incomeValues = []
         APIValues = []
         if (county=="SF"):
-            APIValues = [787, 800, 800, 810, 808]
+            APIValues = [787, 800, 800, 810, 815]
         elif(county=="SC"):
-            APIValues = [806, 819, 831, 838, 834]
+            APIValues = [806, 819, 831, 838, 849]
         elif(county=="SR"):
-            APIValues = [792, 796, 803, 813, 819]
+            APIValues = [792, 796, 803, 813, 822]
 
         homeGrowthRates = []
         incomeGrowthRates = []
         APIGrowthRates = []
+
+        for i in range(len(APIValues) - 1):
+            APIGrowthRates.append(100 * (float(APIValues[i + 1]) - float(APIValues[i])) / (float(APIValues[i])))
+
+        avgAPIGrowth = sum(APIGrowthRates) / float((len(APIGrowthRates)))
+
+        sigmaAPI = numpy.std(APIGrowthRates)
+
+        devAPI = APIGrowthRates[-1] - avgAPIGrowth
+
+        APIGrowth = numpy.array(APIGrowthRates)
+
 
         numFac = 3.0
         tractList = bayArea.get_tracts(county)
@@ -75,23 +87,22 @@ class algorithm:
                 homeGrowthRates.append(100*(float(homeValues[i + 1]) - float(homeValues[i]))/(float(homeValues[i])))
                 incomeGrowthRates.append(100*(float(incomeValues[i + 1]) - float(incomeValues[i]))/(float(incomeValues[i])))
 
-            for i in range(len(sfAPIValues) - 1):
-                APIGrowthRates.append(100*(float(APIValues[i + 1]) - float(APIValues[i]))/(float(APIValues[i])))
+
 
 
 
             if ((len(homeGrowthRates) is not  0) and (len(incomeGrowthRates) is not 0)):
                 avgHomeValueGrowth = sum(homeGrowthRates) / float((len(homeGrowthRates)))
                 avgIncomeGrowth = sum(incomeGrowthRates) / float((len(incomeGrowthRates)))
-                avgAPIGrowth = sum(APIGrowthRates) / float((len(APIGrowthRates)))
+
 
                 sigmaHV = numpy.std(homeGrowthRates)
                 sigmaIncome = numpy.std(incomeGrowthRates)
-                sigmaAPI = numpy.std(APIGrowthRates)
+
 
                 devHV = homeGrowthRates[-1] - avgHomeValueGrowth
                 devIncome = incomeGrowthRates[-1] - avgIncomeGrowth
-                devAPI = APIGrowthRates[-1] - avgAPIGrowth
+
 
                 HVScoreFac = 10.0
                 IncomeScoreFac = 0.0
@@ -99,7 +110,7 @@ class algorithm:
 
                 HVGrowth = numpy.array(homeGrowthRates)
                 IncomeGrowth = numpy.array(incomeGrowthRates)
-                APIGrowth = numpy.array(APIGrowthRates)
+
 
 
                 if (devHV >= 3*sigmaHV):

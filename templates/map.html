@@ -24,7 +24,7 @@
         var sfBSIList = {{ sfBSIs | safe }}
         if ( tract in sfBSIList) {
             bsiVal = sfBSIList[tract]
-            if ( bsiVal > 0.9)
+            if ( bsiVal > 0.75)
                 color = 'DarkGreen';
             else if ( bsiVal > 0.5)
                 color = 'GreenYellow'
@@ -32,7 +32,7 @@
                 color = 'Yellow';
             else if ( bsiVal > -.5 )
                 color = 'orange';
-            else if (bsiVal > -.9)
+            else if (bsiVal > -.75)
                 color = 'OrangeRed'
             else color = 'DarkRed';
         } else {
@@ -52,7 +52,7 @@
         var srBSIList = {{ srBSIs | safe }}
          if ( tract in srBSIList ) {
             bsiVal = srBSIList[tract]
-            if ( bsiVal > 0.9)
+            if ( bsiVal > 0.75)
                 color = 'DarkGreen';
             else if ( bsiVal > 0.5)
                 color = 'GreenYellow'
@@ -60,7 +60,7 @@
                 color = 'Yellow';
             else if ( bsiVal > -.5 )
                 color = 'orange';
-            else if (bsiVal > -.9)
+            else if (bsiVal > -.75)
                 color = 'OrangeRed'
             else color = 'DarkRed';
         } else {
@@ -79,7 +79,7 @@
         var scBSIList = {{ scBSIs | safe }}
         if ( tract in scBSIList ) {
             bsiVal = scBSIList[tract]
-            if ( bsiVal > 0.9)
+            if ( bsiVal > 0.75)
                 color = 'DarkGreen';
             else if ( bsiVal > 0.5)
                 color = 'GreenYellow'
@@ -87,7 +87,7 @@
                 color = 'Yellow';
             else if ( bsiVal > -.5 )
                 color = 'orange';
-            else if (bsiVal > -.9)
+            else if (bsiVal > -.75)
                 color = 'OrangeRed'
             else color = 'DarkRed';
         } else {
