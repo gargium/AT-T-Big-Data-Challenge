@@ -1,4 +1,4 @@
-from flask import Flask, render_template, Markup, json, jsonify
+from flask import Flask, render_template, json
 from bigData import bayArea
 
 app = Flask(__name__)
@@ -11,7 +11,6 @@ def index():
 @app.route("/chart")
 def chart():
     countyToTractMap = {}
-
     countyToTractMap["SR"] = bayArea.get_tracts("SR")
     countyToTractMap["SF"] = bayArea.get_tracts("SF")
     countyToTractMap["SC"] = bayArea.get_tracts("SC")
