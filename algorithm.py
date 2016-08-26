@@ -5,44 +5,7 @@ from bigData import bayArea
 
 bayArea = bayArea()
 
-
-
-# todo: fudge the data and say that the 2009 api scores were 2010 and onward so we have something for 2014
-
 class algorithm:
-
-
-    # def APIValue(county):
-    #
-    #     for i in range(2010, 2015):
-    #         APIvalues.append(bayArea.get_api(county, i))
-    #
-    #     for i in range(len(APIValues) - 1):
-    #         APIGrowthRates.append(APIValues[i + 1] - APIValues[i])
-    #
-    #     avgAPIGrowth = sum(APIGrowthRates) / (len(APIGrowthRates))
-    #
-    #     sigmaAPI = numpy.std(APIGrowthRates)
-    #
-    #     devAPI = APIGrowthRates[3] - avgAPIGrowth
-    #
-    #     APIScoreFac = 0
-    #
-    #     APIGrowth = np.array(APIGrowthRates)
-    #
-    #     if (devAPI >= 3 * sigmaAPI):
-    #         APIScoreFac = (1 / numFac)
-    #     else:
-    #         z = stats.zscore(APIGrowth)
-    #         if (z > 0.5):
-    #             APIScoreFac = (1 / numFac) * (z - 0.5) * 2
-    #         else:
-    #             APIScoreFac = -1 * (1 / numFac) * (z - 0.5) * 2
-    #
-    #     # return APIScoreFac
-    #     return 1
-
-
     # get year over year growth rate
     def BSI(self, county):
         BSIDict = {}
@@ -72,7 +35,6 @@ class algorithm:
 
         APIGrowth = numpy.array(APIGrowthRates)
 
-
         numFac = 3.0
         tractList = bayArea.get_tracts(county)
         for key in list(tractList.keys()):
@@ -87,35 +49,25 @@ class algorithm:
                 homeGrowthRates.append(100*(float(homeValues[i + 1]) - float(homeValues[i]))/(float(homeValues[i])))
                 incomeGrowthRates.append(100*(float(incomeValues[i + 1]) - float(incomeValues[i]))/(float(incomeValues[i])))
 
-
-
-
-
             if ((len(homeGrowthRates) is not  0) and (len(incomeGrowthRates) is not 0)):
                 avgHomeValueGrowth = sum(homeGrowthRates) / float((len(homeGrowthRates)))
                 avgIncomeGrowth = sum(incomeGrowthRates) / float((len(incomeGrowthRates)))
 
-
                 sigmaHV = numpy.std(homeGrowthRates)
                 sigmaIncome = numpy.std(incomeGrowthRates)
-
 
                 devHV = homeGrowthRates[-1] - avgHomeValueGrowth
                 devIncome = incomeGrowthRates[-1] - avgIncomeGrowth
 
-
-                HVScoreFac = 10.0
+                HVScoreFac = 0.0
                 IncomeScoreFac = 0.0
                 APIScoreFac = 0.0
 
                 HVGrowth = numpy.array(homeGrowthRates)
                 IncomeGrowth = numpy.array(incomeGrowthRates)
 
-
-
                 if (devHV >= 3*sigmaHV):
                     HVScoreFac = (1/numFac)
-
                 else:
                     z_values = stats.zscore(HVGrowth)
                     p_values = scipy.stats.norm.sf(abs(z_values))
@@ -167,13 +119,7 @@ class algorithm:
                 incomeGrowthRates[:] = []
                 APIGrowthRates[:] = []
 
-                # print HVScoreFac
-                # print IncomeScoreFac
-                # print '\n'
-
                 bayArea.set_bsi(county, key, bsi)
                 BSIDict[key] = bsi
-            # bayArea.set_bsi(county, key, bsi)
-
-            # print county + ": " + " in " + key +  ", " + HVScoreFac + ", " + IncomeScoreFac
+                
         return BSIDict;
