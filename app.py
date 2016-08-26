@@ -1,8 +1,11 @@
 from flask import Flask, render_template, Markup, json, jsonify
 from bigData import bayArea
+from algorithm import algorithm
 
 app = Flask(__name__)
 bayArea = bayArea()
+algorithm = algorithm()
+
 
 @app.route("/")
 def index():
@@ -31,8 +34,15 @@ def chart1():
 
 @app.route("/map")
 def map():
+    SFBSIs = algorithm.BSI("SF")
+    SCBSIs = algorithm.BSI("SC")
+    SRBSIs = algorithm.BSI("SR")
     return render_template('map.html', urlSF='static/Data/sanFrancisco/sanFrancisco2010.geojson',
-                           urlSR='static/Data/sanRamon/sanRamon2010.geojson', urlSC='static/Data/santaClara/santaClara2010.geojson')
+                           urlSR='static/Data/sanRamon/sanRamon2010.geojson',
+                           urlSC='static/Data/santaClara/santaClara2010.geojson',
+                           sfBSIs = SFBSIs,
+                           scBSIs = SCBSIs,
+                           srBSIs = SRBSIs)
 
 @app.route("/about/")
 def about():

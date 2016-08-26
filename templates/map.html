@@ -7,9 +7,50 @@
   var map;
   function initMap() {
     map = new google.maps.Map(document.getElementById('map'), {
-      zoom: 8,
+      zoom: 8.5,
       center: {lat: 37.5, lng: -122}
     });
+
+    map.data.setStyle(function(feature) {
+        var tract = feature.getProperty('TRACT');
+        var color = 0;
+        if ( tract in {{ sfBSIs }} ) {
+            bsiVal = {{ sfBSIs }}[tract]
+            if ( bsiVal > 0.5)
+                color = 'green';
+            else if ( bsiVal > 0 )
+                color = 'yellow';
+            else if ( bsiVal > -.5 )
+                color = 'orange';
+            else color = 'red';
+        } else {
+            color = 'grey'
+        }
+
+        if ( tract in {{ scBSIs }} ) {
+            bsiVal = {{ scBSIs }}[tract]
+            if ( bsiVal > 0.5)
+                color = 'green';
+            else if ( bsiVal > 0 )
+                color = 'yellow';
+            else if ( bsiVal > -.5 )
+                color = 'orange';
+            else color = 'red';
+        } else {
+            color = 'grey'
+        }
+
+         if ( tract in {{ srBSIs }} ) {
+            //color logic
+        } else {
+            //color it gray
+        }
+    return {
+      fillColor: color,
+      strokeWeight: 0.5
+
+    };
+});
 
     // NOTE: This uses cross-domain XHR, and may not work on older browsers.
     map.data.loadGeoJson("{{urlSF}}");
