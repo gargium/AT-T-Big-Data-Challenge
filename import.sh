@@ -11,6 +11,6 @@ for city in $sf $sr $sc;
 do
 	for year in `seq $begin $end`;
 	do
-		mongoimport --db $db --collection $city --file Data/$city/$city$year.geojson
+		mongoimport --db $db --collection $city --file static/Data/$city/$city$year.geojson
 	done
 done

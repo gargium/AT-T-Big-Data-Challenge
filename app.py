@@ -7,11 +7,7 @@ bayArea = bayArea()
 def index():
 	return render_template('index.html')
 
-@app.route("/about/")
-def about():
-	return render_template('about.html')
-
-@app.route("/chart")
+@app.route("/chart/")
 def chart1():
     income = "B19013_001E"
     price = "B25077_001E"
@@ -49,6 +45,10 @@ def chart1():
 def map():
     return render_template('map.html', urlSF='static/Data/sanFrancisco/sanFrancisco2010.geojson',
                            urlSR='static/Data/sanRamon/sanRamon2010.geojson', urlSC='static/Data/santaClara/santaClara2010.geojson')
+
+@app.route("/about/")
+def about():
+    return render_template("about.html")
 
 if __name__ == "__main__":
 	app.run(debug=True)
