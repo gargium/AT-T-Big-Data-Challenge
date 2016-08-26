@@ -11,11 +11,31 @@
       center: {lat: 37.6, lng: -121.8}
     });
 
+    // NOTE: This uses cross-domain XHR, and may not work on older browsers.
+    map.data.loadGeoJson("{{urlSF}}");
+    map.data.loadGeoJson("{{urlSR}}");
+    map.data.loadGeoJson("{{urlSC}}");
+      
     map.data.setStyle(function(feature) {
         var tract = feature.getProperty('TRACT');
         var color = 0;
-        if ( tract in {{ sfBSIs | safe }} ) {
-            bsiVal = {{ sfBSIs | safe }}[tract]
+        var sfBSIList = {{ sfBSIs | safe }}
+        console.log(tract)
+        if ( tract in sfBSIList) {
+            bsiVal = sfBSIList[tract]
+            if ( bsiVal > 0.5)
+                color = 'green';
+            else if ( bsiVal > 0 )
+                color = 'yellow';
+            else if ( bsiVal > -.5 )
+                color = 'orange';
+            else color = 'red';
+        } else {
+            color = 'grey'
+        }
+        var scBSIList = {{ scBSIs | safe }}
+        if ( tract in scBSIList ) {
+            bsiVal = scBSIList[tract]
             if ( bsiVal > 0.5)
                 color = 'green';
             else if ( bsiVal > 0 )
@@ -27,21 +47,9 @@
             color = 'grey'
         }
 
-        if ( tract in {{ scBSIs | safe }} ) {
-            bsiVal = {{ scBSIs | safe }}[tract]
-            if ( bsiVal > 0.5)
-                color = 'green';
-            else if ( bsiVal > 0 )
-                color = 'yellow';
-            else if ( bsiVal > -.5 )
-                color = 'orange';
-            else color = 'red';
-        } else {
-            color = 'grey'
-        }
-
-         if ( tract in {{ srBSIs | safe }} ) {
-            bsiVal = {{ srBSIs | safe }}[tract]
+        var srBSIList = {{ scBSIs | safe }}
+         if ( tract in srBSIList ) {
+            bsiVal = srBSIList[tract]
             if ( bsiVal > 0.5)
                 color = 'green';
             else if ( bsiVal > 0 )
@@ -59,20 +67,7 @@
     };
 });
 
-    // NOTE: This uses cross-domain XHR, and may not work on older browsers.
-    map.data.loadGeoJson("{{urlSF}}");
-    map.data.loadGeoJson("{{urlSR}}");
-    map.data.loadGeoJson("{{urlSC}}");
 
-    map.data.setStyle(function(feature) {
-      var strokeColor = 'grey';
-      var fillColor = 'lightgrey';
-      return /** @type {google.maps.Data.StyleOptions} */({
-        fillColor: fillColor,
-        strokeColor: strokeColor,
-        strokeWeight: 1
-      });
-    });
 
   }
 </script>
