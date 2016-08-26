@@ -11,16 +11,16 @@
       center: {lat: 37.6, lng: -121.8}
     });
 
+    var sanFrancisco = new google.maps.Data();
+    var sanRamon = new google.maps.Data();
+    var santaClara = new google.maps.Data();
+
     // NOTE: This uses cross-domain XHR, and may not work on older browsers.
-    map.data.loadGeoJson("{{urlSF}}");
-    map.data.loadGeoJson("{{urlSR}}");
-    map.data.loadGeoJson("{{urlSC}}");
-      
-    map.data.setStyle(function(feature) {
+    sanFrancisco.loadGeoJson("{{urlSF}}");
+    sanFrancisco.setStyle(function(feature) {
         var tract = feature.getProperty('TRACT');
         var color = 0;
         var sfBSIList = {{ sfBSIs | safe }}
-        console.log(tract)
         if ( tract in sfBSIList) {
             bsiVal = sfBSIList[tract]
             if ( bsiVal > 0.5)
@@ -33,6 +33,40 @@
         } else {
             color = 'grey'
         }
+        return {
+          fillColor: color,
+          strokeWeight: 0.5
+
+        };
+    });
+    sanRamon.loadGeoJson("{{urlSR}}");
+    sanRamon.setStyle(function(feature) {
+        var tract = feature.getProperty('TRACT');
+        var color = 0;
+
+        var srBSIList = {{ srBSIs | safe }}
+         if ( tract in srBSIList ) {
+            bsiVal = srBSIList[tract]
+            if ( bsiVal > 0.5)
+                color = 'green';
+            else if ( bsiVal > 0 )
+                color = 'yellow';
+            else if ( bsiVal > -.5 )
+                color = 'orange';
+            else color = 'red';
+        } else {
+            color = 'grey'
+        }
+        return {
+          fillColor: color,
+          strokeWeight: 0.5
+        };
+    });
+
+    santaClara.loadGeoJson("{{urlSC}}");
+    santaClara.setStyle(function(feature) {
+        var tract = feature.getProperty('TRACT');
+        var color = 0;
         var scBSIList = {{ scBSIs | safe }}
         if ( tract in scBSIList ) {
             bsiVal = scBSIList[tract]
@@ -46,29 +80,15 @@
         } else {
             color = 'grey'
         }
+        return {
+          fillColor: color,
+          strokeWeight: 0.5
+        };
+    });
 
-        var srBSIList = {{ scBSIs | safe }}
-         if ( tract in srBSIList ) {
-            bsiVal = srBSIList[tract]
-            if ( bsiVal > 0.5)
-                color = 'green';
-            else if ( bsiVal > 0 )
-                color = 'yellow';
-            else if ( bsiVal > -.5 )
-                color = 'orange';
-            else color = 'red';
-        } else {
-            color = 'grey'
-        }
-    return {
-      fillColor: color,
-      strokeWeight: 0.5
-
-    };
-});
-
-
-
+    sanFrancisco.setMap(map);
+    sanRamon.setMap(map);
+    santaClara.setMap(map);
   }
 </script>
 <script async defer

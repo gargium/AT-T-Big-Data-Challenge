@@ -17,8 +17,11 @@ def chart():
     countyToTractMap["SR"] = bayArea.get_tracts("SR")
     countyToTractMap["SF"] = bayArea.get_tracts("SF")
     countyToTractMap["SC"] = bayArea.get_tracts("SC")
+    SFBSIs = algorithm.BSI("SF")
+    SCBSIs = algorithm.BSI("SC")
+    SRBSIs = algorithm.BSI("SR")
 
-    return render_template('chart.html', bayArea=json.dumps(bayArea.get_bay_area()), countyTractMap=json.dumps(countyToTractMap))
+    return render_template('chart.html', bayArea=json.dumps(bayArea.get_bay_area()), countyTractMap=json.dumps(countyToTractMap), sfBSIs = json.dumps(SFBSIs), scBSIs = json.dumps(SCBSIs), srBSIs = json.dumps(SRBSIs))
 
 @app.route("/map")
 def map():

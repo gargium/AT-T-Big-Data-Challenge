@@ -1,7 +1,7 @@
 {% extends "layout.html" %}
 
 {% block head %}
-<script src='../static/Chart.min.js'></script>  
+<script src='../static/Chart.min.js'></script>
 {% endblock %}
 
 {% block body %}
@@ -30,7 +30,7 @@
 
     <row>
         <div class="col-md-10 col-md-offset-1 col-xs-12 text-center">
-            <h3>[BSI] = <span>93939 (Super Duper)</span></h3>
+            <h3>[BBI] = <span></span></h3>
         </div>
     </row>
 
@@ -84,6 +84,5 @@
         var chart = document.getElementById('chart').getContext('2d');
         new Chart(chart).Line(chartData);
     }
-
 </script>
 {% endblock %}
