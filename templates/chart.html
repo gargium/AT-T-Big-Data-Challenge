@@ -12,16 +12,16 @@
             <hr class="col-md-10 col-md-offset-1">
             <row>
                 <select name="County" id="countyDropdown" class="selectpicker col-xs-3 col-xs-offset-1" onchange="setTracts()">
-                    <option value="" disabled selected>County</option>
+                    <option value="county" disabled selected>County</option>
                     <option value="SF">San Francisco</option>
                     <option value="SR">Contra Costa</option>
                     <option value="SC">Santa Clara</option>
                 </select>
                 <select name="Tract" id="tractDropdown" class="selectpicker col-xs-2 col-xs-offset-1" onchange="loadData()">
-                    <option value="" disabled selected>Tract</option>
+                    <option value="tract" disabled selected>Tract</option>
                 </select>
                 <select name="factors" id="factorDropdown" class="selectpicker col-xs-3 col-xs-offset-1" onchange="loadData()">
-                    <option value="" disabled selected>Factors</option>
+                    <option value="factor" disabled selected>Factors</option>
                     <option value="income">Household Income</option>
                     <option value="price">Home Value</option>
                 </select>
@@ -31,7 +31,7 @@
 
     <row>
         <div class="col-md-10 col-md-offset-1 col-xs-12 text-center">
-            <h3>[BBI] = <span></span></h3>
+            <h3>BBI = <span id="bsi">(select options)</span></h3>
         </div>
     </row>
 
@@ -47,10 +47,27 @@
 
 {% block spells %}
 <script>
+    window.onload = function() {
+        var chartData = {
+            labels : ["2010","2011","2012","2013","2014"],
+            datasets : [
+                {
+                    fillColor : "rgba(172,194,132,0.4)",
+                    strokeColor : "#ACC26D",
+                    pointColor : "#fff",
+                    pointStrokeColor : "#9DB86D",
+                    data : [0,0,0,0,0]
+                }
+            ]
+        }
+        var chart = document.getElementById('chart').getContext('2d');
+        new Chart(chart).Line(chartData);
+    }
+
     function setTracts() {
         var tracts = {{ countyTractMap | safe }};
         var county = tracts[countyDropdown.value];
-        tractDropdown.options.length = 0;
+        tractDropdown.options.length = 1;
         Object.keys(county).forEach(function(value) {
             var x = document.getElementById("tractDropdown");
             var option = document.createElement("option");
@@ -61,6 +78,28 @@
     }
 
     function loadData() {
+        if (tractDropdown.value === "tract" || factorDropdown.value === "factor") {
+            return
+        }
+
+        // update bsi
+        var county;
+        if (countyDropdown.value === "SF") {
+            county = {{ sfBSIs | safe }};
+        } else if (countyDropdown.value === "SR") {
+            county = {{ srBSIs | safe }};
+        } else {
+            county = {{ scBSIs | safe }};
+        }
+        var bsi = county[tractDropdown.value];
+        if (bsi) {
+            document.getElementById("bsi").textContent = bsi;
+        }
+        else {
+            document.getElementById("bsi").textContent = "missing data component";
+        }
+
+        // update chart
         var ba = {{ bayArea | safe }};
         var county = ba[countyDropdown.value];
         var data = [];
