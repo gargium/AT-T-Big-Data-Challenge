@@ -1,6 +1,17 @@
 # Welcome to the Boom Bust Index (BBI)
 A predictive housing price index and mapping system. Our application implements an algorithm to predict housing price market price trends. 
 
+# How to run
+Dependecies: 
+- Flask
+- MongoDB
+- Numpy
+- SciPy
+
+How to run:
+- Start Mongo
+- run "python app.py"
+
 # Who
 Developers:
 - Nick Griffin
