@@ -10,14 +10,16 @@
   <span style="color: OrangeRed">Bad</span>
   <span style="color: DarkRed">Very Bad</span>
 </div>
+{% endblock %}
 
-
+{% block spells %}
 <script>
 
-  function initMap() {
-    var map = new google.maps.Map(document.getElementById('map'), {
-      zoom: 9,
-      center: {lat: 37.6, lng: -121.8}
+    var map;
+    function initMap() {
+        map = new google.maps.Map(document.getElementById('map'), {
+            zoom: 9,
+            center: {lat: 37.6, lng: -121.8}
     });
 
     var sanFrancisco = new google.maps.Data();
@@ -56,6 +58,7 @@
           strokeWeight: 0.5
         };
     });
+
     sanRamon.loadGeoJson("{{urlSR}}");
     sanRamon.setStyle(function(feature) {
         var tract = feature.getProperty('TRACT');
