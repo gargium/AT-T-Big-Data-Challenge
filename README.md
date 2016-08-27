@@ -10,7 +10,7 @@ Dependecies:
 
 How to run:
 - Start Mongo
-- run "python app.py"
+- Run "python app.py"
 
 # Who
 Developers:
